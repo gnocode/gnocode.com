@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^.gitignore - [F,L]
+RewriteRule ^.git - [F,L]
