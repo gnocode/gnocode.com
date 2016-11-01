@@ -1,0 +1,51 @@
+name:               "gnocode"
+description:        "A New Orleans Community Of Developers and Engineers"
+
+url:                ""
+author:             "spaceotterinspace"
+email:              "jacqnelson@gmail.com"
+gravatar_hash:      ""
+twitter:            "gnocode"
+email:              ""
+github:             "gnocode"
+pinterest:          ""
+linkedin:           ""
+facebook:           "groups/nolatech/"
+
+disqus_shortname:   ""
+
+background:         "http://apple.wallpapersfine.com/wallpapers/original/1242x2208/w-5273.jpg"
+
+paginate:           5
+paginate_path:      "/page:num/"
+
+baseurl:            ""
+permalink:          /:year/:month/:day/:title/
+
+markdown:           kramdown
+
+nav:
+  - name:           "About"
+    href:           "/about"
+  - name:           "Location"
+    href:           "/location"
+
+sass:
+  style:            :compressed
+
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+gems:
+  - jekyll-paginate

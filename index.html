@@ -1,157 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>gnocode is New Orleans Community Of Developers and Engineers</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+---
+layout: default 
+---
+<header class="bloghead">
+    <nav class="bloghead-nav">
+      {% for nav in site.nav %}
+        <a href="{{ nav.href }}">{{ nav.name }}<span> &nbsp;/&nbsp; </span></a>
+      {% endfor %}
+    </nav>
+</header>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le styles -->
-    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-    <style type="text/css">
-      body {
-        padding-top: 20px;
-      }
-	  body div.container {
-		background-color: white;
-	  }
-	
-	  .sponsor {
-		height: 150px;
-	  }
-	
-    </style>
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-	  <div class="row">
-	      <div class="hero-unit span10">
-	        <h1>Hi there coder type.</h1>
-	        <p>	gnocode is a group of software and web developers from the Greater New Orleans area with the goal of bringing together professionals and eager amateurs to socialize, share and learn. Our group welcomes developers from all backgrounds, platforms and fields.</p>
-			<p>We meet once a month on the second Thursday at <a href="http://launchpadnola.com">LaunchPad.</a></p>
-			<p>
-				<a class="btn primary large" href="http://meetup.com/gnocode">Join our meetup &raquo;</a>
-				<a class="btn info large" href="http://twitter.com/gnocode">Follow @gnocode</a></p>
-			</p>
-	      </div>
-	      <div class="span4" style="text-align: center;">
-		      <iframe width="240" height="370" src="http://meetu.ps/2RK13" frameborder="0"></iframe>
-		  </div>
-	  </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span6">
-          <h2>Google Groups</h2>
-			<ul>
-				<li><a href="http://groups.google.com/group/gnocode?hl=en">gnocode (general)</a></li>
-				<li><a href="http://groups.google.com/group/gnocode-bookclub?hl=en">Book club</a></li>
-				<li><a href="http://groups.google.com/group/gnocode-jobs?hl=en">Jobs</a></li>
-			</ul>
-			
-          <h2>Things of interest</h2>
-  			<ul>
-  				<li><a href="http://barcampnola.org">BarCamp NOLA</a></li>
-				<li><a href="http://neworleanstech.net/">New Orleans Tech</a></li>
-  				<li><a href="http://www.siliconbayounews.com">Silicon Bayou News</a></li>
-  			</ul>
-        </div>
-        <div class="span5">
-          	<h2>Other Happenings</h2>
-			<ul>
-				
-				<li><a href="http://www.linkedin.com/groups/Agile-New-Orleans-4310953">Agile New Orleans</a></li>
-				<li><a href="http://nolahacknight.com/">Hack Night</a></li>
-				<!-- NEED RIGHT URL <li><a href="http://www.gnodotnet.org/">GNO .NET Users Group</a></li> -->
-				<li><a href="http://www.meetup.com/net2no/">Net2NO</a></li>
-				<!-- SILENT ><li><a href="http://www.cajunjug.org/">CajunJug</a></li> -->
-				<li><a href="http://www.nolaphp.org/">NOLAPHP</a></li>
-				<li><a href="http://www.meetup.com/nolaux/">NOLA UX</a></li>
-				<li><a href="http://www.meetup.com/objective-crunk/">Objective Crunk</a></li>
-			</ul>
-       </div>
-        <div class="span5">
-          <h2>Hack(ed) Dat!</h2>
-		  <p>The <a href="http://hackdat.org">Hack Dat</a> code competition was a huge success this year. Check out the winners and participants.</p>
-		  <ul>
-			  <li>First Place: <a href="http://cabdat.com">http://cabdat.com</a></li>
-			  <li>Second Place: <a href="http://is.gd/calldit">http://is.gd/calldit</a></li>			  
-			  <li><a href="http://bard-hackdat.herokuapp.com/">http://bard-hackdat.herokuapp.com/</a></li>
-			  <li><a href="http://close-enough.dyndns.biz/">http://close-enough.dyndns.biz/</a></li>
-			  <li><a href="http://LUNCHpadnola.com">http://LUNCHpadnola.com</a></li>
-			  <li><a href="http://trafficlightstories.com">http://trafficlightstories.com</a></li>
-        </div>
+<div class="content">
+  {% for post in paginator.posts %}
+    <div class="post-list">
+      <h2 class="post-title">
+        <a href="{{ post.url }}">
+          <time>{{ post.date | date_to_string }} --</time>
+          {{ post.title }}
+        </a>
+      </h2>
+      <div>
+        <p><img class="author-image" src="{{ post.image }}"/></p>
+        <p>{{ post.description }}</p>
       </div>
+      <h4>Presented by {{ post.author }}</h4>
+    </div>
+  {% endfor %}
+  {% if paginator.total_pages > 1 %}
+    <div class="pages">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><</a>
+      {% endif %}
 
-  	  <div class="row">
-		<h2>A big thanks to some of our recent sponsors</h2>
-		<div class="span-one-third sponsor" style="padding-top: 50px; text-align: center">
-			<a href="http://www.carrolltontech.com">
-				<img src="img/logos/carrolltontech.jpg" alt="Carrollton Tech" />
-			</a>
-	    </div>
-		<div class="span-one-third sponsor" style="padding-top: 100px; text-align: center">
-			<a href="http://www.iseatz.com">
-				<img src="img/logos/iseatz.png" alt="iSeatz" />
-			</a>
-	    </div>
-		<div class="span-one-third sponsor" style="padding-top: 55px;  text-align: center">
-			<a href="http://www.launchpadignition.com">
-				<img width="200px" src="img/logos/ignition.png" alt="LaunchPad Ignition" />
-			</a>
-	    </div>
-	   </div>
-	   <div class="row">
-	        <div class="span-one-third sponsor" style="text-align: center">
-				<a href="http://www.suscosolutions.com">
-					<img width="280px" src="img/logos/susco.png" alt="Susco Solutions" />
-				</a>
-		    </div>
-			<div class="span-one-third sponsor" style="padding-top: 50px; text-align: center">
-				<a href="http://www.touchstudios.net">
-					<img width="280px" src="img/logos/touch_studios.png" alt="touch Studios" />
-				</a>
-		    </div>
-			<div class="span-one-third" style="padding-top: 25px; text-align: center">
-				<a href="http://www.turbosquid.com">
-					<img width="150px" src="img/logos/turbosquid.png" alt="Turbo Squid" />
-				</a>
-		    </div>
-	   </div>
-	   <div class="row">
-		    <div class="span-one-third sponsor" style="padding-top: 50px;  text-align: center">
-			 &nbsp;   
-		    </div>
-			<div class="span-one-third sponsor" style="padding-top: 50px;  text-align: center">
-				<a href="http://www.voteit.com">
-					<img width="280px" src="img/logos/voteit.png" alt="VoteIT" />
-				</a>
-			</div>		   
-			<div class="span-one-third sponsor" style="text-align: center">
-				&nbsp;
-			</div>
-	   </div>
-
-      <footer class="center">
-		<p>Got something to add? <a href="https://github.com/gnocode/gnocode.com">Fork it on Github</a>.</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-  </body>
-</html>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">></a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
